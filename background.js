@@ -126,12 +126,13 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     console.log("Tab updated. New URL: " + tab.url);
 
     const regex = /^https:\/\/www\.youtube\.com\/shorts\/.*/;
+    const mregex = /^https:\/\/m\.youtube\.com\/shorts\/.*/;
     const ytRegex = /^https:\/\/www\.youtube\.com\/.*/;
 
-    if (regex.test(tab.url)) {
+    if (regex.test(tab.url) || mregex.test(tab.url)) {
       // Redirect to example.com if the current URL matches the pattern
       // window.location.href = 'https://example.com';
-      chrome.tabs.update(tabId, { url: 'https://www.youtube.com/@AsharamJiBapu' });
+      chrome.tabs.update(tabId, { url: 'https://www.google.com' });
       return
     }
 
